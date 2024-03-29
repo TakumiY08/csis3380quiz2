@@ -30,7 +30,7 @@ app.post('/', async (req, res) => {
   console.log(req.body.myuri);
   const uri = req.body.myuri;
   // connect to the database and log the connection
-  mongoose.connect(uri,
+  await mongoose.connect(uri,
     {
       useNewUrlParser: true, useUnifiedTopology: true
     })
