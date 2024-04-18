@@ -44,14 +44,11 @@ app.post('/', async (req, res) => {
   const name = "Takumi Yonemura";
   const studentID = 300371215;
   const newStudent = new Student({name,studentID})
-  if(newStudent) {
-    console.log(newStudent)
-  }
-  newStudent.save()
-                  .then(res.send(`<h1>Document  Added</h1>`))
-                  .catch((err) => res.status(400).json("Error: " + err))
+  newStudent.save();
+                  // .then(res.send(`<h1>Document  Added</h1>`))
+                  // .catch((err) => res.status(400).json("Error: " + err))
   // send a response to the user
-  
+  res.send(`<h1>Document  Added</h1>`)
 });
 
 app.listen(port, () => {
