@@ -30,21 +30,20 @@ app.post('/', async (req, res) => {
   console.log(req.body.myuri);
   const uri = req.body.myuri;
   // connect to the database and log the connection
-  if(uri){
-    await mongoose.connect(uri,
-      {
-        useNewUrlParser: true, useUnifiedTopology: true
-      })
-      .then(() => {
-        console.log('Connecting to MongoDB')
-      })
-  }
+  await mongoose.connect(uri,
+    {
+      useNewUrlParser: true, useUnifiedTopology: true
+    })
+    .then(() => {
+      console.log('Connecting to MongoDB')
+    })
   
   // add the data to the database
   const name = "Takumi Yonemura";
   const studentID = 300371215;
   const newStudent = new Student({name,studentID})
-  newStudent.save();
+  await newStudent.save();
+  console.log('document is added')
                   // .then(res.send(`<h1>Document  Added</h1>`))
                   // .catch((err) => res.status(400).json("Error: " + err))
   // send a response to the user
