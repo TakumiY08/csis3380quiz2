@@ -40,7 +40,7 @@ app.post('/', async (req, res) => {
   // add the data to the database
   const name = "Takumi Yonemura";
   const studentID = 300371215;
-  const newStudent = new Student({name,studentID})
+  const newStudent = await new Student({name,studentID})
   newStudent.save()
             .catch((err) => res.status(400).json("Error: " + err))
   // send a response to the user
